@@ -9,17 +9,6 @@ class Post(BaseModel):
     published: bool = True
 
 
-class PostResponse(BaseModel):
-    id: int
-    title: str
-    content: str
-    published: bool
-    created_at: datetime
-
-    class Config:
-        orm_mode = True
-
-
 class User(BaseModel):
     email: EmailStr
     password: str
@@ -28,6 +17,19 @@ class User(BaseModel):
 class UserResponse(BaseModel):
     id: int
     email: EmailStr
+    created_at: datetime
+
+    class Config:
+        orm_mode = True
+
+
+class PostResponse(BaseModel):
+    id: int
+    title: str
+    content: str
+    published: bool
+    user_id: int
+    owner: UserResponse
     created_at: datetime
 
     class Config:
