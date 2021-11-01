@@ -4,7 +4,7 @@ from fastapi.exceptions import HTTPException
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 from .. import models, oauth2
-from ..schemas import Post, PostResponse
+from ..schemas import Post, PostResponse, PostSchema
 from ..database import get_db
 
 router = APIRouter(prefix="/posts", tags=["Posts"])
@@ -31,7 +31,7 @@ def get_posts(db: Session = Depends(get_db), search: Optional[str] = ""):
 
 
 @router.post(
-    "/", status_code=status.HTTP_201_CREATED, response_model=PostResponse
+    "/", status_code=status.HTTP_201_CREATED, response_model=PostSchema
 )
 def create_post(
     post: Post,

@@ -29,6 +29,7 @@ class UserResponse(BaseModel):
 
 
 class PostSchema(BaseModel):
+    id: int
     title: str
     content: str
     published: bool
