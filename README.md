@@ -57,3 +57,38 @@ Activate Virtual Environment
 Deactivate Virtual Environment
 
 `> deactivate`
+
+## Environment Variables in Ubuntu
+
+Setting Environment Variable
+
+`> export ENV_VAR=variablename`
+
+Print all the environment variable
+
+`> printenv`
+
+Remove Environment Variable
+
+`> unset ENV_VAR`
+
+**Add multiple environment variables**
+
+1. Create a .env file in /home/shashank `> touch .env`
+2. Edit the .env file `> vi .env`
+    ```
+    export MY_NAME=shashank
+    export MY_PASSWORD=password123
+    ```
+3. Run `> source .env`
+
+If .env file is in below format,
+
+```
+MY_NAME=shashank
+MY_PASSWORD=password123
+```
+
+run `> set -o allexport; source /home/shashank/.env; set +o allexport`
+
+If the system is rebooted, all the environment variables set are removed. To make the env variable persistent, edit the .profile, located at the home directory(/home/shashank) and add the above command at the end of the file.
