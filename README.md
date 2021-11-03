@@ -92,3 +92,51 @@ MY_PASSWORD=password123
 run `> set -o allexport; source /home/shashank/.env; set +o allexport`
 
 If the system is rebooted, all the environment variables set are removed. To make the env variable persistent, edit the .profile, located at the home directory(/home/shashank) and add the above command at the end of the file.
+
+## Running application on Ubuntu
+
+1. Install gunicorn.
+2. Run `> cd /etc/systemd/system`.
+3. Create a service file: `> sudo vi api.service` - Here the file name can be anything. We will use the file name to start the service. In this case we will use 'api'.
+4. Copy the content of the `gunicorn.service` file to `api.service` file.
+5. Run `> systemctl start api`
+
+To check the status: `> systemctl status api`
+
+To restart the service: `> systemctl restart api`
+
+Start the service automatically after reboot: `> sudo systemctl enable api`
+
+## NGINX
+
+-   High performance webserver that can act as a proxy.
+-   Can handle SSL termination.
+
+![Nginx](nginx.png)
+
+### Setup Nginx
+
+1. Install nginx `> sudo apt install nginx -y`
+2. Navigate to `> cd /etc/nginx/sites-avilable/`
+3. Edit `default` file. (Check nginx-default file)
+4. Start the nginx service. `> systemctl start nginx`
+
+## Enable SSL/HTTPS
+
+Use certbot
+
+## Enable Firewall
+
+Check firewall status: `> sudo ufw status`
+
+Allow traffic:
+
+`> sudo ufw allow http`
+
+`> sudo ufw allow https`
+
+`> sudo ufw allow ssh`
+
+`> sudo ufw allow 5432` (if you want to allow traffic for postgresql db)
+
+Enable firewall: `> sudo ufw enable`
