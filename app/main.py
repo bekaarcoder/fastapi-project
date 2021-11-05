@@ -23,21 +23,21 @@ app.add_middleware(
 )
 
 
-while True:
-    try:
-        conn = psycopg2.connect(
-            host="localhost",
-            database="fastapi",
-            user="postgres",
-            password="postgres",
-            cursor_factory=RealDictCursor,
-        )
-        cursor = conn.cursor()
-        print("Database initialized.")
-        break
-    except Exception as error:
-        print("Database connection failed. Error: ", error)
-        time.sleep(2)
+# while True:
+#     try:
+#         conn = psycopg2.connect(
+#             host="localhost",
+#             database="fastapi",
+#             user="postgres",
+#             password="postgres",
+#             cursor_factory=RealDictCursor,
+#         )
+#         cursor = conn.cursor()
+#         print("Database initialized.")
+#         break
+#     except Exception as error:
+#         print("Database connection failed. Error: ", error)
+#         time.sleep(2)
 
 
 app.include_router(post.router)
@@ -48,4 +48,4 @@ app.include_router(vote.router)
 
 @app.get("/")
 def root():
-    return {"message": "Hello FastApi"}
+    return {"message": "Hello FastApi from Ubuntu"}
